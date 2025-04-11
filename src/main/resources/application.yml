@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: trackit-server
+
+server:
+  port: 8280
+
