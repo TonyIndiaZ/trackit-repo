@@ -22,4 +22,10 @@ public class TestController {
         log.info("Accessed /test/welcome endpoint");
         return "Welcome to TrackIt Application";
     }
+    
+    @GetMapping("/about")
+    public String about() {
+        log.info("Accessed /test/about endpoint");
+        return " About Page";
+    }
 }

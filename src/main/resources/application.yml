@@ -1,7 +1,15 @@
 spring:
   application:
-    name: trackit-server
+    name: ${SPRING_APP_NAME:trackit-server}
+  security:
+    user:
+      name: root
+      password: root
 
 server:
   port: 8280
+
+logging:
+ pattern:
+  console: "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss:SS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}"
 
