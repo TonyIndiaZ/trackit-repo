@@ -1,7 +1,42 @@
 spring:
   application:
-    name: trackit-server
+    name: ${SPRING_APP_NAME:trackit-server}
+  
+  security:
+    user:
+      name: root
+      password: root
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/trackit_db?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      pool-name: HikariCP
+      maximum-pool-size: 10
+      minimum-idle: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Use 'create' for schema generation, 'update' for updates, 'none' for no changes
+    show-sql: true  # Set to false to suppress SQL logs
+    format-sql: true 
 
 server:
   port: 8280
+
+logging:
+  pattern:
+    console: "${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss:SS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}"
+  level:
+    org.springframework.security: DEBUG 
+
+# Swagger UI and API Docs Configuration
+#http://localhost:8280/swagger-ui/index.html
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui
 
